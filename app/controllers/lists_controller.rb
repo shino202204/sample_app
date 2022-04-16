@@ -8,7 +8,7 @@ class ListsController < ApplicationController
     # データを受け取り新規登録するためのインスタンス作成
     list = List.new(list_params)
     # データをDBに保存するためのsaveメソッド実行
-    # saveメソッド：呼び出したModelインスタンスをDBへ保存するcrea
+    # saveメソッド：呼び出したModelインスタンスをDBへ保存する
     list.save
     # トップ画面へリダイレクト
     redirect_to '/top'
