@@ -10,8 +10,9 @@ class ListsController < ApplicationController
     # データをDBに保存するためのsaveメソッド実行
     # saveメソッド：呼び出したModelインスタンスをDBへ保存する
     list.save
-    # トップ画面へリダイレクト
-    redirect_to '/top'
+    # redirect_to '/top'を削除して、以下コードに変更
+    # 詳細画面へリダイレクト
+    redirect_to list_path(list.id)
   end
 
   # 一覧画面用（投稿したList全てを表示）
@@ -22,7 +23,11 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  # 詳細画面用
   def show
+    # 詳細画面で呼び出される投稿データは、URLの/lists/:id内の:idで判別する
+    # findメソッド：引数に一致するidカラムのレコードを取得する
+    @list = List.find(params[:id])
   end
 
   def edit

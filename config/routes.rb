@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   get 'lists/new'
   post 'lists' => 'lists#create'
   get 'lists' => 'lists#index'
-  get 'lists/show'
+
+  # ../lists/1や../lists/3に該当する
+  # URLに投稿データのidを含める（表示する投稿データを判別するため）
+  # このidはshowアクション内にparams[:id]と記述することで取得できる
+  # as:オプション：名前付きルート
+  get 'lists/:id' => 'lists#show',as:'list'
+
   get 'lists/edit'
   # HTTPメソッド'URL' => 'コントローラ#アクション'
   # URLと'コントローラ名#アクション名'の形が同じになる場合は、この部分を省略することができる
