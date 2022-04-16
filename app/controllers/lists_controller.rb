@@ -8,13 +8,18 @@ class ListsController < ApplicationController
     # データを受け取り新規登録するためのインスタンス作成
     list = List.new(list_params)
     # データをDBに保存するためのsaveメソッド実行
-    # saveメソッド：呼び出したModelインスタンスをDBへ保存する
+    # saveメソッド：呼び出したModelインスタンスをDBへ保存するcrea
     list.save
     # トップ画面へリダイレクト
     redirect_to '/top'
   end
 
+  # 一覧画面用（投稿したList全てを表示）
   def index
+    # allはメソッドの一種
+    # モデルがやりとりしているDBのテーブル内の全レコードを取得
+    # Listモデルがやりとりしているlistsテーブルの全レコードを取得
+    @lists = List.all
   end
 
   def show
