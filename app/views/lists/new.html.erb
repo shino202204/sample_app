@@ -1,7 +1,15 @@
 <h1>新規投稿</h1>
 <!--エラー内容の表示部分-->
+<!--errorsメソッド：モデルにバリデーションをかけたときに、発生したエラーの内容を確認できる-->
+<!--any?：エラーが発生しているかどうかを判定できる-->
 <% if @list.errors.any? %>
   <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <!--full_messages：エラーの内容を出力できる。エラー文は配列で保存されているためeachを使う-->
+    <% @list.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <!--form_withにオプション追記-->

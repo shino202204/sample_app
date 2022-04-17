@@ -18,6 +18,7 @@ class ListsController < ApplicationController
     else
       # 「render :アクション名」で同じコントローラの別アクションのViewを表示できる
       render :new #バリデーション結果がfalseなら、新規投稿ページを再表示させる
+    end
   end
 
   # 一覧画面用（投稿したList全てを表示）
