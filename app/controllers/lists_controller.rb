@@ -43,6 +43,15 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
 
+  # 削除機能用
+  # ビューの「削除」ボタンをクリックすると、削除リストのid付きでURLが送信されます。
+  # 送られてきた削除idを元にレコードが探され、そのレコードを削除します。
+  def destroy
+    list = List.find(params[:id]) #データ（レコード）を1件取得
+    list.destroy #データ（レコード）を削除
+    redirect_to '/lists' #投稿一覧画面へリダイレクト
+  end
+
   # privateの行より後に定義されたメソッドは、アクションとして認識されなくなり、URLと対応できなくなる
   private
 
