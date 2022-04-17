@@ -4,4 +4,11 @@ class List < ApplicationRecord
   # 以下の記述により、Listモデルにtitleとbodyに加えて
   # 画像を扱うためのimageカラムが追記されたかのように扱うことが出来ます。
   has_one_attached :image
+
+  # バリデーションの設定：モデルのファイルに設定内容を記述
+  # validatesで対象とする項目を指定、入力されたデータのpresence（存在）をチェック
+  # true：データが存在しなければならないという設定になる
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
 end

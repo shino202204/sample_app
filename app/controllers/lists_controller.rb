@@ -6,13 +6,18 @@ class ListsController < ApplicationController
 
   def create
     # データを受け取り新規登録するためのインスタンス作成
-    list = List.new(list_params)
+    @list = List.new(list_params)
     # データをDBに保存するためのsaveメソッド実行
     # saveメソッド：呼び出したModelインスタンスをDBへ保存する
-    list.save
-    # redirect_to '/top'を削除して、以下コードに変更
-    # 詳細画面へリダイレクト
-    redirect_to list_path(list.id)
+
+    # モデルファイルに記述したバリデーションの結果を検出
+    if @list.save
+      # redirect_to '/top'を削除して、以下コードに変更
+      # 詳細画面へリダイレクト
+      redirect_to list_path(@list.id)
+    else
+      # 「render :アクション名」で同じコントローラの別アクションのViewを表示できる
+      render :new #バリデーション結果がfalseなら、新規投稿ページを再表示させる
   end
 
   # 一覧画面用（投稿したList全てを表示）
