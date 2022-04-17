@@ -54,7 +54,7 @@ class ListsController < ApplicationController
 
   # privateメソッドの名前：「モデル名_params」とすることが多い
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
   end
 
 end
