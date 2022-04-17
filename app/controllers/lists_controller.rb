@@ -30,7 +30,17 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  # 編集画面用
   def edit
+    @list = List.find(params[:id])
+  end
+
+  # 更新機能用
+  # 対応するビューはなし。更新処理後はshowアクションにリダイレクト。
+  def update
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to list_path(list.id)
   end
 
   # privateの行より後に定義されたメソッドは、アクションとして認識されなくなり、URLと対応できなくなる
