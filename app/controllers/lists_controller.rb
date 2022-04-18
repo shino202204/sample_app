@@ -17,6 +17,10 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       # 「render :アクション名」で同じコントローラの別アクションのViewを表示できる
+      # saveメソッドで保存に失敗した場合、エラーメッセージが@list内に追加される
+      # 以下のrenderの部分でredirect_toを使うとnewアクション内で再度@list = List.new が実行され、
+      # @listが上書きされてエラーメッセージが消えてしまう。
+      # 基本的には、エラーメッセージを扱う際にはrender、それ以外はredirect_toを扱うと覚える。
       render :new #バリデーション結果がfalseなら、新規投稿ページを再表示させる
     end
   end
