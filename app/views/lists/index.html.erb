@@ -1,24 +1,40 @@
-<h1>投稿一覧</h1>
+<div class="list-wrap">
+  <% @lists.each do |list| %>
+    <div class="list-box">
+      <% if list.image.attached? %>
+        <!--「size:」の後ろにはスペースを入れること-->
+        <%= image_tag list.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+      <div class="list-comment">
+        <!--Listモデルのbodyカラムに入っているデータを呼び出している-->
+        <span class="list-body"><%= list.body %></span>
+        <span class="list-title"><%= link_to list.title, list_path(list.id) %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<% @lists.each do |list| %>
 
-  <p>タイトル</p>
+<!--以下は10章までの記述-->
 
+<!--<h1>投稿一覧</h1>-->
+<!-- @lists.each do |list| %>-->
+<!--  <p>タイトル</p>-->
   <!--link_toメソッド：リンクを設定する-->
   <!--構文：link_to 表示させるテキスト,リンク先URL[,オプション]-->
-  <span>
-    <%= link_to list.title, list_path(list.id) %>
-  </span>
-
+<!--  <span>-->
+<!--    <= link_to list.title, list_path(list.id) %>-->
+<!--  </span>-->
   <!--image_tagヘルパー：HTMLのimgタグを生成する-->
   <!--listモデルに紐づいているimageをimage_tagに渡すことで画像を表示することができる-->
-  <p>画像</p>
+<!--  <p>画像</p>-->
   <!--imageが存在していればlist.imageを表示、なければno_imageを表示-->
   <!--attached：画像が存在していればtrue、存在していなければfalseを返す-->
-  <% if list.image.attached? %>
-    <%= image_tag list.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-
-<% end %>
+<!--  < if list.image.attached? %>-->
+<!--    <= image_tag list.image, size: "200x200" %>-->
+<!--  < else %>-->
+<!--    <= image_tag 'no_image', size: "200x200" %>-->
+<!--  < end %>-->
+<!--< end %>-->
