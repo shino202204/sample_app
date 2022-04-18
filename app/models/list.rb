@@ -10,5 +10,8 @@ class List < ApplicationRecord
   # true：データが存在しなければならないという設定になる
   validates :title, presence: true
   validates :body, presence: true
+
+  # 「rails c」を試すときはimageのバリデーションをコメントアウト
+  # 理由：rails cで画像を扱う場合は複雑になるため
   validates :image, presence: true
 end
